@@ -1,1 +1,1 @@
-# An simple app for a boring day
+# A simple app for a boring day
