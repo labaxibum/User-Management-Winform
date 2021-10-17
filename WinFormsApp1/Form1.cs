@@ -155,7 +155,6 @@ namespace WinFormsApp1
             {
                 if (i <= 10000)
                 {
-                    i = dtgUser.Rows.Add();
                     string Name = txtName.Text.ToString();
                     string Address = rtAddress.Text.ToString();
                     string Phone = txtPhone.Text.ToString();
@@ -165,11 +164,12 @@ namespace WinFormsApp1
 
                     if (Name!="")
                     {
+                        i = dtgUser.Rows.Add();
                         dtgUser.Rows[i].Cells[0].Value = Name;
                         int number = -1;
                         if (!int.TryParse(Phone, out number))
                         {
-                            MessageBox.Show("Should input a phone number", "Error");
+                            label7.Text = "Should input a phone number";
                         }
                         else
                         {
@@ -180,8 +180,16 @@ namespace WinFormsApp1
                         dtgUser.Rows[i].Cells[3].Value = Address;
                         dtgUser.Rows[i].Cells[4].Value = Birthday;
                         dtgUser.Rows[i].Cells[5].Value = Type;
+                        label7.Text = "";
+                    }
+                    else
+                    {
+                        label7.Text = "You need to input Name";
                     }
                 }
+                txtName.Clear();
+                rtAddress.Clear();
+                txtPhone.Clear();
             }
             catch (Exception)
             {
@@ -392,6 +400,11 @@ namespace WinFormsApp1
 
                 xlsheet.PasteSpecial(xlr, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
             
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
 
         }
     }
